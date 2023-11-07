@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Wise</title>
+    <input type="text" id="cityName">
 </head>
+    <h1>Weather Wise</h1>
 <body>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     
+
+    
+    <!-- // // -->
+    <script>
+
+    
+//    
+    
+axios.get('https://api.openweathermap.org/data/2.5/weather?units=metric&appid={da8c26ed217416e63ccc33bfeb76ea80}&q=karachi')
+  .then(function (response) {
+    // handle success
+    console.log("response is success");
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+
+
+
+
+    </script>
 </body>
 </html>
