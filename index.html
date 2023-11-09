@@ -21,9 +21,9 @@
       //
 
       let getWeather = () => {
-        let cityName = document.querySelector("#cityName").value;
+        let cityName = document.querySelector("#cityName").value
 
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid={da8c26ed217416e63ccc33bfeb76ea80}&q=${cityName}`;
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=e0f99c494c2ce394a18cc2fd3f100543&q=${cityName}`;
 
         axios.get(apiUrl)
           .then(function (response) {
