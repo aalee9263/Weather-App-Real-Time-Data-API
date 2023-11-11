@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('day.jpg'); /* Default background image for day */
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Rest of your CSS styles */
+    </style>
+</head>
+<body>
+    <!-- Your HTML content here -->
+
+    <script>
+        // Your JavaScript code here
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get the current time
+            const currentTime = new Date();
+            const hours = currentTime.getHours();
+
+            // Define the image paths for different times of day
+            const dayImage = 'day.jpg';
+            const nightImage = 'night.jpg';
+
+            // Check the time and set the background image accordingly
+            if (hours >= 6 && hours < 18) {
+                document.body.style.backgroundImage = `url('${dayImage}')`;
+            } else {
+                document.body.style.backgroundImage = `url('${nightImage}')`;
+            }
+
+            // Your JavaScript code for the weather app
+        });
+    </script>
+</body>
+</html>

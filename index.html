@@ -4,16 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-image: url('day.jpg'); /* Default background image for day */
+          background-size: cover;
+          text-align: center;
+          margin: 0;
+          padding: 0;
+      }
+
+      /* Rest of your CSS styles */
+  </style>
   </head>
   <body>
+
     <h1>Weather App</h1>
     <form onsubmit="getWeather(); return false">
       <input type="text" id="cityName" />
       <button type="submit">Get Wise</button>
     </form>
+<button id="getLocationButton">Get My Location</button>
+
 
     <div id="result"></div>
 
+    
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
     <!-- // // -->
@@ -40,6 +56,83 @@
             console.log(error);
           });
       };
+      function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, handleError);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    // Now, you can use the latitude and longitude to fetch weather data for the user's location.
+    // Call your weather API with these coordinates.
+}
+
+function handleError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            alert("User denied the request for geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+    }
+};
+  // Function to handle geolocation request
+function getUserLocation() {
+    if ("geolocation" in navigator) {
+        // Request the user's location
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    } else {
+        alert("Geolocation is not supported in your browser.");
+    }
+}
+
+// Callback for successful geolocation request
+function successCallback(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    // Now, you can use the latitude and longitude to fetch weather data for the user's location.
+    // Call your weather API with these coordinates.
+
+    console.log("Latitude: " + latitude);
+    console.log("Longitude: " + longitude);
+}
+
+// Callback for geolocation error
+function errorCallback(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            alert("User denied the request for geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+    }
+}
+
+// Add a click event listener to the button
+const getLocationButton = document.getElementById("getLocationButton");
+getLocationButton.addEventListener("click", getUserLocation);
+      
+
     </script>
   </body>
 </html>
