@@ -6,16 +6,16 @@
     <title>Weather App</title>
     <style>
       body {
-          font-family: Arial, sans-serif;
-          background-image: url('day.jpg'); /* Default background image for day */
-          background-size: cover;
-          text-align: center;
-          margin: 0;
-          padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url("day.jpg"); /* Default background image for day */
+        background-size: cover;
+        text-align: center;
+        margin: 0;
+        padding: 0;
       }
 
       /* Rest of your CSS styles */
-  </style>
+    </style>
   </head>
   <body>
 
@@ -24,12 +24,20 @@
       <input type="text" id="cityName" />
       <button type="submit">Get Wise</button>
     </form>
-<button id="getLocationButton">Get My Location</button>
-
-
+    <!-- <div id="result">
+      <h1 id="locationName"></h1>
+      <p id="weatherDescription"></p>
+      <p id="temperature"></p>
+      <p id="feelsLike"></p>
+      <p id="humidity"></p>
+      <p id="pressure"></p>
+      <p id="windInfo"></p>
+      <p id="sunriseTime"></p>
+      <p id="sunsetTime"></p>
+  </div> -->
+  
     <div id="result"></div>
 
-    
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
     <!-- // // -->
@@ -37,11 +45,12 @@
       //
 
       let getWeather = () => {
-        let cityName = document.querySelector("#cityName").value
+        let cityName = document.querySelector("#cityName").value;
 
         let apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=e0f99c494c2ce394a18cc2fd3f100543&q=${cityName}`;
 
-        axios.get(apiUrl)
+        axios
+          .get(apiUrl)
           .then(function (response) {
             // handle success
             console.log("response is success");
@@ -49,89 +58,41 @@
 
             document.querySelector("#result").innerHTML = 
             `<h1>${response.data.name}</h1>
-            <h3>${response.data.main.temp}°C</h3>`;
+            <h3>${response.data.main.temp}°C</h3>;
+            <h3>${response.data.sys.sunrise}</h3>;
+            <h3>${response.data.sys.sunset}</h3>;
+            <h3>${response.data.main.temp_max}</h3>;
+            <h3>${response.data.main.temp_min}</h3>;
+            <h3>${response.data.main.feel_like}</h3>`;
           })
           .catch(function (error) {
             // handle error
             console.log(error);
           });
       };
-      function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition, handleError);
-    } else {
-        alert("Geolocation is not supported by this browser.");
-    }
-}
+    //   axios.get('your_weather_api_endpoint')
+    // .then(function (response) {
+    //     // Get the weather data from the response
+    //     const weatherData = response.data;
 
-function showPosition(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-
-    // Now, you can use the latitude and longitude to fetch weather data for the user's location.
-    // Call your weather API with these coordinates.
-}
-
-function handleError(error) {
-    switch (error.code) {
-        case error.PERMISSION_DENIED:
-            alert("User denied the request for geolocation.");
-            break;
-        case error.POSITION_UNAVAILABLE:
-            alert("Location information is unavailable.");
-            break;
-        case error.TIMEOUT:
-            alert("The request to get user location timed out.");
-            break;
-        case error.UNKNOWN_ERROR:
-            alert("An unknown error occurred.");
-            break;
-    }
-};
-  // Function to handle geolocation request
-function getUserLocation() {
-    if ("geolocation" in navigator) {
-        // Request the user's location
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    } else {
-        alert("Geolocation is not supported in your browser.");
-    }
-}
-
-// Callback for successful geolocation request
-function successCallback(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-
-    // Now, you can use the latitude and longitude to fetch weather data for the user's location.
-    // Call your weather API with these coordinates.
-
-    console.log("Latitude: " + latitude);
-    console.log("Longitude: " + longitude);
-}
-
-// Callback for geolocation error
-function errorCallback(error) {
-    switch (error.code) {
-        case error.PERMISSION_DENIED:
-            alert("User denied the request for geolocation.");
-            break;
-        case error.POSITION_UNAVAILABLE:
-            alert("Location information is unavailable.");
-            break;
-        case error.TIMEOUT:
-            alert("The request to get user location timed out.");
-            break;
-        case error.UNKNOWN_ERROR:
-            alert("An unknown error occurred.");
-            break;
-    }
-}
-
-// Add a click event listener to the button
-const getLocationButton = document.getElementById("getLocationButton");
-getLocationButton.addEventListener("click", getUserLocation);
-      
+    //     // Update the placeholders with the weather information
+    //     document.getElementById('locationName').innerHTML = `<strong>${weatherData.name}</strong>`;
+    //     document.getElementById('weatherDescription').innerHTML = weatherData.weather[0].description;
+    //     document.getElementById('temperature').innerHTML = `Temperature: ${weatherData.main.temp} °C`;
+    //     document.getElementById('feelsLike').innerHTML = `Feels Like: ${weatherData.main.feels_like} °C`;
+    //     document.getElementById('humidity').innerHTML = `Humidity: ${weatherData.main.humidity}%`;
+    //     document.getElementById('pressure').innerHTML = `Pressure: ${weatherData.main.pressure} hPa`;
+    //     document.getElementById('windInfo').innerHTML = `Wind: ${weatherData.wind.speed} m/s, ${weatherData.wind.deg}°`;
+        
+    //     // Sunrise and sunset times need to be formatted from Unix timestamps
+    //     const sunriseTime = new Date(weatherData.sys.sunrise * 1000);
+    //     const sunsetTime = new Date(weatherData.sys.sunset * 1000);
+    //     document.getElementById('sunriseTime').innerHTML = `Sunrise: ${sunriseTime.toLocaleTimeString()}`;
+    //     document.getElementById('sunsetTime').innerHTML = `Sunset: ${sunsetTime.toLocaleTimeString()}`;
+    // })
+    // .catch(function (error) {
+    //     console.log(error);
+    // });
 
     </script>
   </body>
