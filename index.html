@@ -13,7 +13,14 @@
         margin: 0;
         padding: 0;
       }
-
+      #locationName{
+        background-color: aquamarine;
+        width: 340px;
+      }
+      #temperature{
+        background-color: blanchedalmond;
+        width: 320px;
+      }
       /* Rest of your CSS styles */
     </style>
   </head>
@@ -24,7 +31,7 @@
       <input type="text" id="cityName" />
       <button type="submit">Get Wise</button>
     </form>
-    <!-- <div id="result">
+    <div id="result">
       <h1 id="locationName"></h1>
       <p id="weatherDescription"></p>
       <p id="temperature"></p>
@@ -34,7 +41,7 @@
       <p id="windInfo"></p>
       <p id="sunriseTime"></p>
       <p id="sunsetTime"></p>
-  </div> -->
+  </div>
   
     <div id="result"></div>
 
@@ -56,14 +63,22 @@
             console.log("response is success");
             console.log(response.data);
 
-            document.querySelector("#result").innerHTML = 
-            `<h1>${response.data.name}</h1>
-            <h3>${response.data.main.temp}°C</h3>;
-            <h3>${response.data.sys.sunrise}</h3>;
-            <h3>${response.data.sys.sunset}</h3>;
-            <h3>${response.data.main.temp_max}</h3>;
-            <h3>${response.data.main.temp_min}</h3>;
-            <h3>${response.data.main.feel_like}</h3>`;
+            document.querySelector("#locationName").innerHTML = 
+            `<h1>${response.data.name}</h1>`
+            document.querySelector("#temperature").innerHTML = 
+            `<h3>${response.data.main.temp}</h3>`
+            document.querySelector("#temperature").innerHTML = 
+            `<h3>${response.data.main.temp}</h3>`
+            document.querySelector("#temperature").innerHTML = 
+            `<h3>${response.data.main.temp}</h3>`
+            document.querySelector("#temperature").innerHTML = 
+            `<h3>${response.data.main.temp}</h3>`
+            document.querySelector("#temperature").innerHTML = 
+            `<h3>${response.data.main.temp}</h3>`
+            document.querySelector("#temperature").innerHTML = 
+            `<h3>${response.data.main.temp}</h3>`
+            // <h3>Feel Like ${response.data.main.feel_like}</h3>`;
+            // <h3>${response.data.main.temp}°C</h3>;
           })
           .catch(function (error) {
             // handle error
