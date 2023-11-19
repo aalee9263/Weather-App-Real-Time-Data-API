@@ -4,50 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-image: url("day.jpg"); /* Default background image for day */
-        background-size: cover;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-      }
-      #locationName{
-        background-color: aquamarine;
-        width: 340px;
-      }
-      #temperature{
-        background-color: blanchedalmond;
-        width: 320px;
-      }
-      /* Rest of your CSS styles */
-    </style>
+    <link rel="stylesheet" href="./dateAndTime.css" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-
     <h1>Weather App</h1>
-    <form onsubmit="getWeather(); return false">
-      <input type="text" id="cityName" />
-      <button type="submit">Get Wise</button>
-    </form>
-    <div id="result">
-      <h1 id="locationName"></h1>
-      <p id="weatherDescription"></p>
-      <p id="temperature"></p>
-      <p id="feelsLike"></p>
-      <p id="humidity"></p>
-      <p id="pressure"></p>
-      <p id="windInfo"></p>
-      <p id="sunriseTime"></p>
-      <p id="sunsetTime"></p>
-  </div>
-  
-    <div id="result"></div>
+    <div id="leftBody">
+      <form id="input" onsubmit="getWeather(); return false">
+        <input type="text" id="cityName" placeholder="Enter City Name" />
+        <button id="btn" type="submit">Get Wise</button>
+      </form>
+      <div id="time"></div>
+      <div id="date"></div>
+      <div id="result">
+        <h1 id="locationName"></h1>
+        <p id="temperature"></p>
+        <p id="feelsLike"></p>
+      </div>
 
+      <div id="result">
+        <p id="humidity"></p>
+        <p id="pressure"></p>
+        <p id="windInfo"></p>
+        <p id="sunriseTime"></p>
+        <p id="sunsetTime"></p>
+        <p id="weatherDescription"></p>
+      </div>
+    </div>
+    <div id="rightBody">
+
+    </div>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-
-    <!-- // // -->
     <script>
       //
 
@@ -63,52 +50,34 @@
             console.log("response is success");
             console.log(response.data);
 
-            document.querySelector("#locationName").innerHTML = 
-            `<h1>${response.data.name}</h1>`
-            document.querySelector("#temperature").innerHTML = 
-            `<h3>${response.data.main.temp}</h3>`
-            document.querySelector("#temperature").innerHTML = 
-            `<h3>${response.data.main.temp}</h3>`
-            document.querySelector("#temperature").innerHTML = 
-            `<h3>${response.data.main.temp}</h3>`
-            document.querySelector("#temperature").innerHTML = 
-            `<h3>${response.data.main.temp}</h3>`
-            document.querySelector("#temperature").innerHTML = 
-            `<h3>${response.data.main.temp}</h3>`
-            document.querySelector("#temperature").innerHTML = 
-            `<h3>${response.data.main.temp}</h3>`
-            // <h3>Feel Like ${response.data.main.feel_like}</h3>`;
-            // <h3>${response.data.main.temp}°C</h3>;
-          })
+            document.querySelector(
+              "#locationName"
+            ).innerHTML = `<h1>${response.data.name}</h1>`;
+            document.querySelector(
+              "#temperature"
+            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+            document.querySelector(
+              "#temperature"
+            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+            document.querySelector(
+              "#temperature"
+            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+            document.querySelector(
+              "#temperature"
+            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+            document.querySelector(
+              "#temperature"
+            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+            document.querySelector(
+              "#temperature"
+            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+              })
           .catch(function (error) {
             // handle error
             console.log(error);
           });
       };
-    //   axios.get('your_weather_api_endpoint')
-    // .then(function (response) {
-    //     // Get the weather data from the response
-    //     const weatherData = response.data;
-
-    //     // Update the placeholders with the weather information
-    //     document.getElementById('locationName').innerHTML = `<strong>${weatherData.name}</strong>`;
-    //     document.getElementById('weatherDescription').innerHTML = weatherData.weather[0].description;
-    //     document.getElementById('temperature').innerHTML = `Temperature: ${weatherData.main.temp} °C`;
-    //     document.getElementById('feelsLike').innerHTML = `Feels Like: ${weatherData.main.feels_like} °C`;
-    //     document.getElementById('humidity').innerHTML = `Humidity: ${weatherData.main.humidity}%`;
-    //     document.getElementById('pressure').innerHTML = `Pressure: ${weatherData.main.pressure} hPa`;
-    //     document.getElementById('windInfo').innerHTML = `Wind: ${weatherData.wind.speed} m/s, ${weatherData.wind.deg}°`;
-        
-    //     // Sunrise and sunset times need to be formatted from Unix timestamps
-    //     const sunriseTime = new Date(weatherData.sys.sunrise * 1000);
-    //     const sunsetTime = new Date(weatherData.sys.sunset * 1000);
-    //     document.getElementById('sunriseTime').innerHTML = `Sunrise: ${sunriseTime.toLocaleTimeString()}`;
-    //     document.getElementById('sunsetTime').innerHTML = `Sunset: ${sunsetTime.toLocaleTimeString()}`;
-    // })
-    // .catch(function (error) {
-    //     console.log(error);
-    // });
-
     </script>
+    <script src="./dateAndTime.js"></script>
   </body>
 </html>

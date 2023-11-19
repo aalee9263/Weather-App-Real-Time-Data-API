@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("day.jpg"); /* Default background image for day */
+    background-size: cover;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #1B1A3E;
+    color: white;
+  }
+  #locationName{
+    width: 340px;
+    color: white;
+  }
+  #temperature{
+    width: 320px;
+  }
+  #leftBody{
+    width: 30%;
+    background-color: #172031;
+    margin: 20px;
+    border-radius: 20px;
+    
+  }
+
+  #rightbody{
+    width: 60%;
+    background-color: #172031;
+    margin: 20px;
+    border-radius: 20px;
+  }
+
+  #cityName{
+    margin-top: 20px;
+    height: 26px;
+    font-size: 20px;
+  }
+  #btn{
+    font-size: 20px;
+    height: 26px;
+  }
