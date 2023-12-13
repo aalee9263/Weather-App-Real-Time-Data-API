@@ -23,12 +23,13 @@
       </div>
 
       <div id="result">
-        <p id="humidity"></p>
+        <p id="clouds"></p>
         <p id="pressure"></p>
-        <p id="windInfo"></p>
+        <p id="tempMax"></p>
+        <p id="tempMin"></p>
         <p id="sunriseTime"></p>
         <p id="sunsetTime"></p>
-        <p id="weatherDescription"></p>
+        <!-- <p id="weatherDescription"></p> -->
       </div>
     </div>
     <div id="rightBody">
@@ -53,26 +54,46 @@
             document.querySelector(
               "#locationName"
             ).innerHTML = `<h1>${response.data.name}</h1>`;
+            
             document.querySelector(
               "#temperature"
-            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+            ).innerHTML = `<h3>${response.data.main.temp}°C</h3>`;
+            
             document.querySelector(
-              "#temperature"
-            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+              "#clouds"
+            ).innerHTML = `<h3>clouds: ${response.data.clouds.all}</h3>`;
+            
+            // document.querySelector(
+            //   "#temperature"
+            // ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+            
             document.querySelector(
-              "#temperature"
-            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+              "#tempMax"
+            ).innerHTML = `<h3>temp Max: ${response.data.main.temp_max}°C</h3>`;
+            
             document.querySelector(
-              "#temperature"
-            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+              "#tempMin"
+            ).innerHTML = `<h3>temp Min: ${response.data.main.temp_min}°C</h3>`;
+            
             document.querySelector(
-              "#temperature"
-            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+              "#pressure"
+            ).innerHTML = `<h3>pressure: ${response.data.main.pressure}</h3>`;
+            
             document.querySelector(
-              "#temperature"
-            ).innerHTML = `<h3>${response.data.main.temp}</h3>`;
+              "#feelsLike"
+            ).innerHTML = `<h3>feels like: ${response.data.main.feels_like}</h3>`;
+            
+            // document.querySelector(
+            //   "#sunriseTime"
+            // ).innerHTML = `<h3>${response.data.sys.sunrise}</h3>`;
+            
+            // document.querySelector(
+            //   "#sunsetTime"
+            // ).innerHTML = `<h3>${response.data.sys.sunset}</h3>`;
               })
-          .catch(function (error) {
+          
+          
+             .catch(function (error) {
             // handle error
             console.log(error);
           });
